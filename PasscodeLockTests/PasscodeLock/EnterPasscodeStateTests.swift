@@ -15,9 +15,8 @@ class NotificaionObserver: NSObject {
     
     func observe(notification: String) {
         
-        let center = NSNotificationCenter.defaultCenter()
-        
-        center.addObserver(self, selector: "handle:", name: notification, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(handle), name: NSNotification.Name(rawValue: notification), object: nil)
     }
     
     func handle(notification: NSNotification) {
@@ -50,7 +49,7 @@ class EnterPasscodeStateTests: XCTestCase {
             
             var called = false
             
-            override func passcodeLockDidSucceed(lock: PasscodeLockType) {
+            override func passcodeLockDidSucceed(_ lock: PasscodeLockType) {
                 
                 called = true
             }
@@ -70,7 +69,7 @@ class EnterPasscodeStateTests: XCTestCase {
             
             var called = false
             
-            override func passcodeLockDidFail(lock: PasscodeLockType) {
+            override func passcodeLockDidFail(_ lock: PasscodeLockType) {
                 
                 called = true
             }
@@ -88,7 +87,7 @@ class EnterPasscodeStateTests: XCTestCase {
         
         let observer = NotificaionObserver()
         
-        observer.observe(PasscodeLockIncorrectPasscodeNotification)
+        observer.observe(notification: PasscodeLockIncorrectPasscodeNotification)
         
         passcodeState.acceptPasscode(["0"], fromLock: passcodeLock)
         passcodeState.acceptPasscode(["0"], fromLock: passcodeLock)
@@ -101,7 +100,7 @@ class EnterPasscodeStateTests: XCTestCase {
         
         let observer = NotificaionObserver()
         
-        observer.observe(PasscodeLockIncorrectPasscodeNotification)
+        observer.observe(notification: PasscodeLockIncorrectPasscodeNotification)
         
         passcodeState.acceptPasscode(["0"], fromLock: passcodeLock)
         passcodeState.acceptPasscode(["0"], fromLock: passcodeLock)
