@@ -71,8 +71,8 @@ open class PasscodeSignButton: UIButton {
     
     fileprivate func setupActions() {
         
-        addTarget(self, action: #selector(PasscodeSignButton.handleTouchDown), for: .touchDown)
-        addTarget(self, action: #selector(PasscodeSignButton.handleTouchUp), for: [.touchUpInside, .touchDragOutside, .touchCancel])
+        addTarget(self, action: #selector(handleTouchDown), for: .touchDown)
+        addTarget(self, action: #selector(handleTouchUp), for: [.touchUpInside, .touchDragOutside, .touchCancel])
     }
     
     func handleTouchDown() {
