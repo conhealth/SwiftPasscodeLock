@@ -91,7 +91,7 @@ open class PasscodeLockPresenter {
                 delay: 0,
                 usingSpringWithDamping: 1,
                 initialSpringVelocity: 0,
-                options: UIViewAnimationOptions(),
+                options: [.curveEaseInOut],
                 animations: { [weak self] in
                     
                     self?.passcodeLockWindow.alpha = 0
