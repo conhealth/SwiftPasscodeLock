@@ -10,9 +10,9 @@ import Foundation
 
 class FakePasscodeState: PasscodeLockStateType {
     
-    var title = "A"
-    var description = "B"
-    var isCancellableAction = true
+    let title = "A"
+    let description = "B"
+    let isCancellableAction = true
     var isTouchIDAllowed = true
     
     var acceptPaccodeCalled = false

@@ -51,7 +51,8 @@ open class PasscodeLockPresenter {
     //
     //       Revise in a later version and remove the hack if not needed
     func toggleKeyboardVisibility(hide: Bool) {
-        if let keyboardWindow = UIApplication.shared.windows.last, keyboardWindow.description.hasPrefix("<UIRemoteKeyboardWindow")
+        if let keyboardWindow = UIApplication.shared.windows.last,
+            keyboardWindow.description.hasPrefix("<UIRemoteKeyboardWindow")
         {
             keyboardWindow.alpha = hide ? 0.0 : 1.0
         }

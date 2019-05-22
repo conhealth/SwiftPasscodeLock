@@ -31,22 +31,22 @@ class CustomPasscodeLockPresenter: PasscodeLockPresenter {
         // add notifications observers
         notificationCenter.addObserver(
             self,
-            selector: "applicationDidLaunched",
-            name: Notification.Name.UIApplicationDidFinishLaunching,
+            selector: #selector(CustomPasscodeLockPresenter.applicationDidLaunched),
+            name: NSNotification.Name.UIApplicationDidFinishLaunching,
             object: nil
         )
         
         notificationCenter.addObserver(
             self,
-            selector: "applicationDidEnterBackground",
-            name: Notification.Name.UIApplicationDidEnterBackground,
+            selector: #selector(CustomPasscodeLockPresenter.applicationDidEnterBackground),
+            name: NSNotification.Name.UIApplicationDidEnterBackground,
             object: nil
         )
         
         notificationCenter.addObserver(
             self,
-            selector: "applicationDidBecomeActive",
-            name: Notification.Name.UIApplicationDidBecomeActive,
+            selector: #selector(CustomPasscodeLockPresenter.applicationDidBecomeActive),
+            name: NSNotification.Name.UIApplicationDidBecomeActive,
             object: nil
         )
     }
@@ -56,7 +56,7 @@ class CustomPasscodeLockPresenter: PasscodeLockPresenter {
         notificationCenter.removeObserver(self)
     }
     
-    dynamic func applicationDidLaunched() -> Void {
+    @objc dynamic func applicationDidLaunched() -> Void {
         
         // start the Pin Lock presenter
         passcodeLockVC.successCallback = { [weak self] _ in
@@ -68,7 +68,7 @@ class CustomPasscodeLockPresenter: PasscodeLockPresenter {
         presentPasscodeLock()
     }
     
-    dynamic func applicationDidEnterBackground() -> Void {
+    @objc dynamic func applicationDidEnterBackground() -> Void {
         
         // present PIN lock
         presentPasscodeLock()
@@ -77,7 +77,7 @@ class CustomPasscodeLockPresenter: PasscodeLockPresenter {
         addSplashView()
     }
     
-    dynamic func applicationDidBecomeActive() -> Void {
+    @objc dynamic func applicationDidBecomeActive() -> Void {
         
         // remove splashView for iOS app background swithcer
         removeSplashView()

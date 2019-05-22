@@ -27,8 +27,7 @@ struct EnterPasscodeState: PasscodeLockStateType {
         }
     }
     
-
-    fileprivate var isNotificationSent = false
+    private var isNotificationSent = false
     
     init(allowCancellation: Bool = false) {
         
